@@ -102,13 +102,13 @@
 
 【1】变量声明格式：
 
-type varName;    数据类型 变量名；
+type varName;    数据类型 变量名； 如： int age;
 
-type varName = value;  数据类型 变量名 = 初始值；
+type varName = value;  数据类型 变量名 = 初始值； 如：int age = 66;
 
-type varName,varName1;  数据类型 变量名1，变量名2 ；
+type varName,varName2;  数据类型 变量名，变量名2 ；如：int age, age2;
 
-type varName,varName1 = value;  数据类型 变量名1，变量名2 = 初始值；
+type varName = value,varName2 = value2;  数据类型 变量名 = 初始值，变量名2 = 初始值;   如：int age =19,age2= 99;
 
 【2】变量声明：
 
@@ -147,7 +147,9 @@ public class TestVar01{
 }
 ```
 
+变量不可重复定义：
 
+![image-20201212105419711](https://i.loli.net/2020/12/12/B5xVmhyzCvsw8Ya.png)
 
 【4】变量的使用：
 
@@ -173,7 +175,52 @@ public class TestVar01{
 }
 ```
 
+扩展：
+
+```java
+public class TestVar02{
+	public static void main(String[] args){
+		int a = 10;
+		int b = 20;
+		int c = a + b;
+	}
+}
+```
+
+现在对上述代码进行“反编译过程” “反汇编过程” （javap -v TestVar02.class）
+
+![image-20201212104926803](https://i.loli.net/2020/12/12/HxO1VsQD9KGvf8d.png)
+
+![image-20201212104523435](https://i.loli.net/2020/12/12/VU14JiKGjlmqIXw.png)
+
+【5】变量的内存
+
+![image-20201212105626100](https://i.loli.net/2020/12/12/kjq6LclozJrXW5g.png)
+
+【6】习题
+
+```java
+public class TestVar03{
+	public static void main(String[] args){
+		int num1 = 10;
+		int num2 = 20;
+		num1 = num2;
+		num2 = num2 + 10;
+		num1 = num2 + 10;
+		num2 = num1;
+		System.out.println("num1="+num1);
+		System.out.println("num2="+num2);
+	}
+}
+```
+
+内存分析：
+
+![image-20201212110423993](https://i.loli.net/2020/12/12/UlokMP2gnapcxjf.png)
+
+结果：
+
+![image-20201212110618585](https://i.loli.net/2020/12/12/te2K1x5wO4QIbkA.png)
 
 
-daydayup！04
 
