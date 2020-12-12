@@ -114,11 +114,11 @@ type varName,varName1 = value;  数据类型 变量名1，变量名2 = 初始值
 
 （1）如果你只定义一个变量，没有给变量进行赋值的话，那么其实这个变量相当于没有定义：（反编译查看）
 
-![image-20201212101745723](https://i.loli.net/2020/12/12/FrM4AZNPq3UbQeg.png)
+![](https://i.loli.net/2020/12/12/FrM4AZNPq3UbQeg.png)
 
 （2）变量如果没有进行赋值的话，那么使用的时候会出错，告诉你：尚未初始化变量：
 
-![image-20201212101845351](https://i.loli.net/2020/12/12/CHqMcyxw56lTerj.png)
+![](https://i.loli.net/2020/12/12/CHqMcyxw56lTerj.png)
 
 【3】变量的赋值
 
