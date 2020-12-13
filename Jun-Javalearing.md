@@ -114,15 +114,15 @@ type varName = value,varName2 = value2;  数据类型 变量名 = 初始值，�
 
 （1）如果你只定义一个变量，没有给变量进行赋值的话，那么其实这个变量相当于没有定义：（反编译查看）
 
-![image-20201212103020630](https://i.loli.net/2020/12/12/I4fNehxj1tUBA5V.png)
+![image-20201213154841694](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%8F%98%E9%87%8F%E7%9A%84%E5%A3%B0%E6%98%8E01?token=ANGHKQPF472AUCDJIMCXDZC72XD36)
 
 （2）变量如果没有进行赋值的话，那么使用的时候会出错，告诉你：尚未初始化变量：
 
-![image-20201212103141024](https://i.loli.net/2020/12/12/LKx29vGOogWzje7.png)
+![image-20201213155116883](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%8F%98%E9%87%8F%E7%9A%84%E8%B5%8B%E5%80%BC02?token=ANGHKQPOOLLBMPHBGPS3O6S72XEEC)
 
 【3】变量的赋值
 
-![image-20201211235855341](https://i.loli.net/2020/12/12/wIH3JAL7PxedSFu.png)
+![image-20201213155254848](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%8F%98%E9%87%8F%E7%9A%84%E8%B5%8B%E5%80%BC03?token=ANGHKQNGCBWY4LAN3UVFO6S72XEKI)
 
 我们自己定义的时候直接可以用一句话定义：
 
@@ -149,7 +149,7 @@ public class TestVar01{
 
 变量不可重复定义：
 
-![image-20201212105419711](https://i.loli.net/2020/12/12/B5xVmhyzCvsw8Ya.png)
+![image-20201213155802560](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%8F%98%E9%87%8F%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E5%AE%9A%E4%B9%89?token=ANGHKQOK4C4ANPJEBRWAMOS72XE5O)
 
 【4】变量的使用：
 
@@ -189,13 +189,13 @@ public class TestVar02{
 
 现在对上述代码进行“反编译过程” “反汇编过程” （javap -v TestVar02.class）
 
-![image-20201212104926803](https://i.loli.net/2020/12/12/HxO1VsQD9KGvf8d.png)
+![image-20201213155635264](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%AD%97%E8%8A%82%E7%A0%81%E7%9A%84%E5%8F%8D%E6%B1%87%E7%BC%9602?token=ANGHKQMIJJW64MRNLIQT24S72XEX4)
 
-![image-20201212104523435](https://i.loli.net/2020/12/12/VU14JiKGjlmqIXw.png)
+![image-20201213155523038](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%AD%97%E8%8A%82%E7%A0%81%E7%9A%84%E5%8F%8D%E6%B1%87%E7%BC%9601?token=ANGHKQKEXLCL3TU57VLOEFK72XEUC)
 
 【5】变量的内存
 
-![image-20201212105626100](https://i.loli.net/2020/12/12/kjq6LclozJrXW5g.png)
+![image-20201213155957985](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98?token=ANGHKQPZ2AUHY2CZHXHMMHC72XFEY)
 
 【6】习题
 
@@ -216,11 +216,82 @@ public class TestVar03{
 
 内存分析：
 
-![image-20201212110423993](https://i.loli.net/2020/12/12/UlokMP2gnapcxjf.png)
+![image-20201213160208120](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90?token=ANGHKQKMOWHPN6GKHWHKZG272XFMM)
 
 结果：
 
-![image-20201212110618585](https://i.loli.net/2020/12/12/te2K1x5wO4QIbkA.png)
+![image-20201213160308862](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C?token=ANGHKQP6SYYA2VBKZVZPOAK72XFQE)
+
+
+
+【7】变量的作用域：
+
+作用域指的就是作用范围，变量在什么范围中有效
+
+作用范围就是离它最近的{}
+
+备注：一会我们写的代码，不要去运行，会出错
+
+```java
+	/*
+	局部变量： 定义在方法中
+	成员变量：定义在类中，方法外
+	*/
+public class TestVar04{
+	int b = 20;//成员变量
+	public static void main(String[] args){
+		System.out.println(a);//no
+		int a = 10;//局部变量
+		System.out.println(a);//yes
+		System.out.println(b);//yes
+		{
+			int c = 40;
+			System.ot.println(c);//yes
+			int a = 50;//属于变量的重复定义
+		}
+		System.ot.println(c);//no
+	}
+	
+	public void eat(){
+		System.out.println(b);//yes
+		System.out.println(a);//no
+		int a = 30;//不是变量的重复定义
+		System.out.println(a);//yes
+	}
+}
+```
+
+
+
+### 数据类型
+
+Java是一种强类型语言，每个变量都必须声明其数据类型。
+
+Java的数据类型可分为两大类：基本数据类型（primitive data type）和引用数据类型（reference data type）。
+
+![image-20201213154202817](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/Java数据类型?token=ANGHKQIUGERRTRU3BTLSUBC72XDB2)
+
+PS：巧妙记忆：除了基本数据类型以外的所有数据类型都属于引用数据类型，本章重点：基本数据类型
+
+#### 整数类型
+
+十进制整数，如：99，-500，0
+
+八进制整数，要求以0开头，如：015
+
+十六进制整数，要求0x或0X开头，如：0x15
+
+二进制：要求0b或者0B开头，如：0b11
+
+
+
+几进制：就是逢几进1的问题：
+
+平时实际生活中用的最多的是：十进制
+
+计算机用二进制最多
+
+![image-20201213160843560](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/进制表?token=ANGHKQIPZX5MZCZA3WUTGOC72XGFQ)
 
 
 
