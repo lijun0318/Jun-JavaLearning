@@ -114,15 +114,15 @@ type varName = value,varName2 = value2;  数据类型 变量名 = 初始值，�
 
 （1）如果你只定义一个变量，没有给变量进行赋值的话，那么其实这个变量相当于没有定义：（反编译查看）
 
-![image-20201213154841694](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%8F%98%E9%87%8F%E7%9A%84%E5%A3%B0%E6%98%8E01?token=ANGHKQPF472AUCDJIMCXDZC72XD36)
+![image-20201213161955576](https://i.loli.net/2020/12/13/kxOmubqFKUdInj8.png)
 
 （2）变量如果没有进行赋值的话，那么使用的时候会出错，告诉你：尚未初始化变量：
 
-![image-20201213155116883](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%8F%98%E9%87%8F%E7%9A%84%E8%B5%8B%E5%80%BC02?token=ANGHKQPOOLLBMPHBGPS3O6S72XEEC)
+![image-20201213162051623](https://i.loli.net/2020/12/13/4y2Wcdixa36RlLI.png)
 
 【3】变量的赋值
 
-![image-20201213155254848](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%8F%98%E9%87%8F%E7%9A%84%E8%B5%8B%E5%80%BC03?token=ANGHKQNGCBWY4LAN3UVFO6S72XEKI)
+![image-20201213162147368](https://i.loli.net/2020/12/13/Cd2H4wl17vQbuyj.png)
 
 我们自己定义的时候直接可以用一句话定义：
 
@@ -149,7 +149,7 @@ public class TestVar01{
 
 变量不可重复定义：
 
-![image-20201213155802560](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%8F%98%E9%87%8F%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E5%AE%9A%E4%B9%89?token=ANGHKQOK4C4ANPJEBRWAMOS72XE5O)
+![image-20201213163045082](https://i.loli.net/2020/12/13/lXjn3bPS1KowVrg.png)
 
 【4】变量的使用：
 
@@ -189,13 +189,13 @@ public class TestVar02{
 
 现在对上述代码进行“反编译过程” “反汇编过程” （javap -v TestVar02.class）
 
-![image-20201213155635264](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%AD%97%E8%8A%82%E7%A0%81%E7%9A%84%E5%8F%8D%E6%B1%87%E7%BC%9602?token=ANGHKQMIJJW64MRNLIQT24S72XEX4)
+![image-20201213162510824](https://i.loli.net/2020/12/13/8Q34zZ2PJGYqgs7.png)
 
-![image-20201213155523038](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%AD%97%E8%8A%82%E7%A0%81%E7%9A%84%E5%8F%8D%E6%B1%87%E7%BC%9601?token=ANGHKQKEXLCL3TU57VLOEFK72XEUC)
+![image-20201213162606319](https://i.loli.net/2020/12/13/OI5WyF3bdG6Dzh4.png)
 
 【5】变量的内存
 
-![image-20201213155957985](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98?token=ANGHKQPZ2AUHY2CZHXHMMHC72XFEY)
+![image-20201213162713909](https://i.loli.net/2020/12/13/RGq3v7OSUhjlows.png)
 
 【6】习题
 
@@ -216,11 +216,11 @@ public class TestVar03{
 
 内存分析：
 
-![image-20201213160208120](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90?token=ANGHKQKMOWHPN6GKHWHKZG272XFMM)
+![image-20201213162802404](https://i.loli.net/2020/12/13/kGVEcKU9NDqHsgn.png)
 
 结果：
 
-![image-20201213160308862](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C?token=ANGHKQP6SYYA2VBKZVZPOAK72XFQE)
+![image-20201213162840409](https://i.loli.net/2020/12/13/o2zPFsN4b8RHATO.png)
 
 
 
@@ -269,7 +269,7 @@ Java是一种强类型语言，每个变量都必须声明其数据类型。
 
 Java的数据类型可分为两大类：基本数据类型（primitive data type）和引用数据类型（reference data type）。
 
-![image-20201213154202817](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/Java数据类型?token=ANGHKQIUGERRTRU3BTLSUBC72XDB2)
+![image-20201213163139498](https://i.loli.net/2020/12/13/Y29CJcXFlHrqByh.png)
 
 PS：巧妙记忆：除了基本数据类型以外的所有数据类型都属于引用数据类型，本章重点：基本数据类型
 
@@ -291,7 +291,196 @@ PS：巧妙记忆：除了基本数据类型以外的所有数据类型都属于
 
 计算机用二进制最多
 
-![image-20201213160843560](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/进制表?token=ANGHKQIPZX5MZCZA3WUTGOC72XGFQ)
+![image-20201213163203765](https://i.loli.net/2020/12/13/Bi8KS7xIyNqn5Hl.png)
 
 
+
+##### 整数类型常量
+
+【1】二进制转换为十进制：
+
+二进制： 1101
+
+  	1 x2^3   +     1 x*2^2   +   0 x2^1   +    1 x2^0 
+
+=            8     +        4          +       0       +        1
+
+=    13
+
+
+
+【2】十进制转换为二进制：
+
+十进制： 13
+
+![image-20201213164916006](https://i.loli.net/2020/12/13/NAYBqSL1dOW2y5w.png)
+
+
+
+【3】八进制装换为十进制：
+八进制： 16
+
+​        1 x8^1     +     6 x8^0
+
+=         8       +       6
+
+14
+
+
+
+【4】十进制转换为八进制：
+
+十进制： 14
+
+![image-20201213165814848](https://i.loli.net/2020/12/13/X7W3kpomMz85Q16.png)
+
+
+
+【5】八进制转换为十六进制：
+
+把十进制当成一个中转站：
+
+八进制----》十进制----》十六进制
+
+
+
+实际上根本不用自己转换这么麻烦： 我们可以直接用系统中提供给我们的程序员计算器：
+
+![image-20201213170522477](https://i.loli.net/2020/12/13/2kfq1cPz4FenNWY.png)
+
+
+
+##### 整数类型变量
+
+整型数据类型：
+
+| 类型  | 占用存储空间 |                    表数范围                     |
+| :---: | :----------: | :---------------------------------------------: |
+| byte  |      1       |            -2^7 ~ 2^7-1（-128~127）             |
+| short |      2       |         -2^15 ~ 2^15-1 （-32768~32767）         |
+|  int  |      4       | -2^31 ~ 2^31-1 （-2147483648~2147483647）约21亿 |
+| long  |      8       |                 -2^63 ~ 2^63-1                  |
+
+比如：byte的右侧表数范围127怎么算出来的？
+
+byte：1字节 = 8位
+
+二进制：01111111
+
+   1x2^6   + 1x2^5   + 1x2^4   + 1x2^3   + 1x2^2   + 1x2^1   + 1x2^0
+
+=      64     +  32       +      16      +   8          +    4        +       2      +      1
+
+=      127 
+
+代码：
+
+```java
+public class TestVar05{
+	public static void main(String[] args){
+		//定义整数类型的变量：
+		//给变量赋值的时候，值可以为不同进制的：
+		int num1 = 12;//默认情况下赋值就是十进制的情况
+		System.out.println(num1);
+		int num2 = 012;//前面加上0， 这个值就是八进制的
+		System.out.println(num2);
+		int num3 = 0x12;//前面加上0x或者0X，这个值就是十六进制的
+		System.out.println(num3);
+		int num4 = 0b10;//前面加上0b或者0B，这个值就是二进制的
+		System.out.println(num4);
+		
+		//定义byte类型的变量：
+		byte b = 126;//定义了一个byte类型的变量，名字叫b，赋值为126
+		System.out.println(b);
+		//注意：超范围的赋值会报错。
+		short s = 30000;
+		System.out.println(s);
+		int i = 1234;  //int i = 12345678910; 报错
+		System.out.println(i);
+		//整数类型默认就是int类型的，所以12345678910是一个int类型的数，对于int类型来说，它超出范围了
+		//要想把一个数给long类型变量，那么后面加上L（推荐）或者l就可以了
+		long l = 12345678910L;  //long l = 12345678910;  报错
+		System.out.println(l);
+		//注意： 只有这个数超出int类型的范围了后面才需要加上L， 否则无需加L也可以赋值给long类型；
+		long num5 =12;
+		System.out.println(num5);
+	}
+}
+```
+
+
+
+#### 浮点类型
+
+##### 浮点类型常量
+
+（1）十进制数形式，例如：
+
+3.14   314.0    0.314
+
+（2）科学计数法形式，如：
+
+314e2     314E2（e的大小写没有区分）   314E-2
+
+double f = 314E2;    //314*10^2     -->31400.0
+
+double f2 = 314E-2;   //314*10^(-2)      -->3.14
+
+
+
+##### 浮点类型变量
+
+float类型又被称作单精度类型，尾数可以精确到7位有效数字，在很多情况下，float类型的精度很难满足需求。
+
+而double表示这种类型的数值精度约是float类型的两倍，又被称作为双精度类型，绝大部分应用程序都常用double类型。
+
+float类型的数值有一个后缀F或者f，没有后缀F/f的浮点数值默认为double类型。
+
+也可以在浮点数值后添加后缀D或者d，以明确其为double类型。
+
+|  类型  | 占用存储空间 |                          表数范围                           |
+| :----: | :----------: | :---------------------------------------------------------: |
+| float  |    4字节     |       大约±3.402 823 47E+38F （有效位数为6-7位左右）        |
+| double |    8字节     | 大约±1.797 693 134 862 315 70E+308（有效位数为15-16位左右） |
+
+PS： 有效数字指的是从左开始第一个不为0的数到最后一个数
+
+同样的int与float都是4字节的，但两者的表数范围不一样。是因为浮点型的存储更为复杂。
+
+
+
+代码：
+
+```java
+public class TestVar06{
+	public static void main(String[] args){
+		//浮点类型的常量有两种形式：
+		//十进制形式：
+		double num1 = 3.14;
+		System.out.println(num1);
+		//科学计数法形式：
+		double num2 = 314E-2;
+		System.out.println(num2);
+		
+		//浮点类型的变量：
+		//注意： 浮点型默认是double类型的，要想将一个double的数赋给float类型，必须后面加上F或者f
+		float f1 = 3.14159263654584F;  //float f1 = 3.14159263654584; 报错
+		System.out.println(f1);
+		//注意：double类型后面可以加D或者d，但是一般我们都省略不写
+		double d1 = 3.14159263654584D;
+		System.out.println(d1);
+		
+		//注意：我们最好不要进行浮点类型的比较：
+		float f2 = 0.3F;
+		double d2 = 0.3;
+		System.out.println(f2==d2);
+		/*
+		区别：
+		= 赋值运算： 将等号右侧的值赋给等号左侧
+		== 判断==左右两侧的值是否相等  ： 结果要么相等 要么不相等
+		==运算符的结果就是要么是true，要么是false
+		*/
+	}
+}
+```
 
