@@ -484,3 +484,192 @@ public class TestVar06{
 }
 ```
 
+
+
+#### 字符类型
+
+【1】什么是编码？
+
+编码（计算机术语）
+
+编码是[信息](https://baike.baidu.com/item/信息/111163)从一种形式或格式转换为另一种形式的过程，也称为计算机编程语言的代码简称编码。用预先规定的方法将文字、数字或其它对象编成数码，或将信息、数据转换成规定的电脉冲信号。编码在[电子计算机](https://baike.baidu.com/item/电子计算机/191373)、[电视](https://baike.baidu.com/item/电视/228945)、遥控和通讯等方面广泛使用。编码是信息从一种形式或格式转换为另一种形式的过程。[解码](https://baike.baidu.com/item/解码/10944752)，是编码的逆过程。
+
+【2】生活案例
+
+![image-20201214144450608](https://i.loli.net/2020/12/14/NrBocAT9FbU5mHS.png)
+
+【3】由权威机构形成的编码表才可以称之为：字符集
+
+**· ASCII**
+
+​	英文字符集
+
+​	用一个字节的7位表示
+
+**·IOS8859-1**
+
+​	西欧字符集
+
+​	用一个字节的8位表示
+
+**·GB2312**
+
+​	简体中文字符集
+
+​	最多使用两个字节编码
+
+PS： 中文 ：2个字节
+
+GB2312兼容了ASCII中的字符：
+
+**·GBK**
+
+​	GB2312的升级，加入了繁体字
+
+​	最多使用两个字节编码
+
+疑问：
+
+![image-20201214150219541](https://i.loli.net/2020/12/14/Azr8uo6xlXBcLsS.png)
+
+首位如果是0：一个字节代码代表一个字符
+
+首位如果是1：那么一个字节不够，要加上后面的字节才能完整的表示一个字符。
+
+**·Unicode**
+
+​	国际通用字符集，融合了目前人类使用的所有字符。为每个字符分配唯一的字符码。
+
+推出了UTF标准：
+
+三种编码方案： UTF-8， UTF-16，  UTF-32
+
+
+
+以UTF-8为案例讲解：
+
+中文： 珊   ---》 Unicode ： 29642
+
+![image-20201214151757662](https://i.loli.net/2020/12/14/MWLySKk74A81OcI.png)
+
+| Unicode符号范围（十六进制） | UTF-8编码                              |
+| --------------------------- | -------------------------------------- |
+| 0000  0000  -  0000  007F   | 0xxxxxxx()                             |
+| 0000  0080  -  0000  07FF   | 110xxxxx  10xxxxxx                     |
+| 0000  0800  -  0000  FFFF   | 1110xxxx  10xxxxxx  10xxxxxx           |
+| 0001  0000  -  0010  FFFF   | 11110xxx  10xxxxxx  10xxxxxx  10xxxxxx |
+
+底层存储：
+
+![image-20201214152224824](https://i.loli.net/2020/12/14/YsiHPhGd4LneBCy.png)
+
+UTF-8标准最多可以用6个字节表示：
+
+![image-20201214152536422](https://i.loli.net/2020/12/14/oxfEUW7zN1uQwF5.png)
+
+以后我们用的最多的就是UTF-8
+
+
+
+##### 转义字符
+
+【1】Java中使用单引号来表示字符常量，字符型在内存中占两个字节。
+
+char类型用来表示在Unicode编码中的字符。Unicode编码被设计用来处理各种语言的文字，它占2给字节，可允许65536个字符。
+
+【2】转义字符：
+
+| 转义符 |       含义        | Unicode值 |
+| :----: | :---------------: | :-------: |
+|   \b   | 退格（backspace） |  \u0008   |
+|   \n   |       换行        |  \u000a   |
+|   \r   |       回车        |  \u000d   |
+|   \t   |   制表符（tab）   |  \u0009   |
+|   \“   |      双引号       |  \u0022   |
+|   \‘   |      单引号       |  \u0027   |
+|  \ \   |      反斜杠       |  \u005c   |
+
+【3】ASCII表：
+
+![image-20201214160532941](https://i.loli.net/2020/12/14/dJLMmNogWCE7tqp.png)
+
+【4】UNicode编码表：
+
+https://www.cnblogs.com/csguo/p/7401874.html
+
+
+
+代码1：
+
+```java
+public class TestVar07{
+	public static void main(String[] args){
+		char ch1 = 'a';
+		System.out.println(ch1);
+		char ch2 = 'A';
+		System.out.println(ch2);
+		char ch3 = '4';
+		System.out.println(ch3);
+		char ch4 = '中';
+		System.out.println(ch4);
+		char ch5 = '?';
+		System.out.println(ch5);
+		//Java中无论：字母，数字，符号，中文都是字符类型的常量，都占用2个字节。
+		char ch6 = ' ';
+		System.out.println(ch6);
+		//字符类型：单引号引起来的单个字符
+		System.out.println("-----------------------------");
+		/*
+		转义字符：
+		\将后面的普通字符转换为特殊含义
+		*/
+		char ch7 = '\n';
+		System.out.println("aaa"+ch7+"bbb");
+		
+		System.out.println("aaa\nbbb");// \n 换行
+		
+		System.out.println("aaa\tbbb");//  \t   制表符
+		
+		System.out.println("aaa\bbbb");//aabbb    \b   先前退一格
+		System.out.println("aaa\rbbb");//bbb        \r    将光标移到本行开头：回车
+		
+		System.out.println("\"java\"");// \"  将双引号原样输出  \'  将单引号原样输出    \\将\原样输出
+	}
+}
+```
+
+代码2：
+
+```java
+public class TestVar08{
+	public static void main(String[] args){
+		char ch1 = 'A';
+		System.out.println(ch1);//A
+		System.out.println(ch1+90);//155
+		System.out.println(155-ch1);//90
+		//char类型我们看到的样子就是它本身的字面常量，但是底层在进行计算的时候，实际上是按照一个码进行计算的。
+		//这个码就是ASCII
+		//之前说char类型是按照Unicode码表进行存储的（Unicode兼容了ASCII码，UNIcode的前128为ASCILL）
+		
+		char ch2 = '中';// 中
+		System.out.println(ch2+90);// 20103
+		System.out.println(155-ch2);//  90
+		
+		//转换：
+		int num1 = (int)ch2;
+		System.out.println(num1);//  20013
+		
+		char ch = (char)20013;
+		System.out.println(ch);
+		
+		int num2 = '中';
+		char ch5 = 20013;
+		System.out.println(ch5);
+		
+		//面试题：
+		char ch6 = '2' + 2;
+		System.out.println(ch6); //'4'--->4
+	}
+}	
+```
+
