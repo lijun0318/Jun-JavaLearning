@@ -771,3 +771,72 @@ public class TestVar10{
 }
 ```
 
+
+
+##### 练习：final，字符常量，Scanner的使用
+
+```java
+import java.util.Scanner;//形象理解： 在java.util下将Scanner拿过来用  （从客户端角度思考）
+public class TestVar11{
+	public static void main(String[] args){
+		//实现功能：求圆的周长和面积
+		//【1】提取变量：提取变量，就是为了一劳永逸，以后只要改变变量的值，下面只要用到这个变量的地方，取值也都发生变化了
+		//【2】一个变量被final修饰，这个变量就变成了一个常量，这个常量的值就不可以变了
+		//     这个常量就是我们说是的 字符常量
+		//     约定俗成的规定：字符常量的名字全部大写
+		//【3】使用扫描器：Scanner的使用--》注意通过形象的理解去使用
+		
+		final double PI = 3.14;  //提取圆周率
+		//拿来一个扫描器：
+		Scanner sc = new Scanner(System.in);
+		//给一个友好性的提示：   （从客户端角度思考）
+		System.out.print("请录入一个半径：");
+		//让扫描器扫描键盘录入的int类型的数据：
+		int r = sc.nextInt();
+	
+		//求周长：
+		double c = 2*PI*r;
+		System.out.println("周长为："+ c);
+		
+		//求面积：
+		//pi = 9.29;  报错：TestVar11.java:12: 错误: 无法为最终变量pi分配值
+		double s = PI*r*r;
+		System.out.println("面积为："+ s);
+	}
+}
+```
+
+
+
+##### 练习：加深Scanner的使用
+
+![image-20201222161008032](https://i.loli.net/2020/12/22/IgcFnMlrRbEkoiO.png)
+
+```java
+import java.util.Scanner;
+public class TestVar12{
+	public static void main(String[] args){
+		//键盘录入学生的信息：年龄，身高，姓名，性别：
+		//键盘录入年龄：(接收int类型数据)
+		Scanner sc = new Scanner(System.in);
+		System.out.print("请录入年龄：");
+		int age = sc.nextInt();
+		  
+		//键盘录入身高：（接收double类型数据）
+		System.out.print("请录入身高：");
+		double height = sc.nextDouble();
+		
+		//键盘录入姓名： （接收String类型数据--》 字符串）
+		System.out.print("请录入姓名：");
+		String name = sc.next();
+		
+		//键盘录入性别： （接收char类型数据）
+		System.out.print("请录入性别：");
+		String sexStr = sc.next();
+		char sex = sexStr.charAt(0);
+		//上面两句可以合为一句表示： char sex = sc.next().charAt(0);
+		System.out.print("该学生的信息为：姓名："+name+"，年龄是："+age+"，身高是："+height+"，性别是："+sex);
+	}
+}
+```
+
