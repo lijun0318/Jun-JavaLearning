@@ -6,51 +6,49 @@
 
 + 算术运算符
 
-​        +，-，*，/，%，++（自增），--（自减）
+​      +，-，*，/，%，++（自增），--（自减）
 
 + 赋值运算符
 
-​        =
+​       =
 
 + 扩展赋值运算符
 
-​        +=， -=， *=， /=
+   +=， -=， *=， /=
 
 + 关系运算符
 
- 		> ，< ， >= ，<= ，== ， !=
+​        > ，< ， >= ，<= ，== ， !=
 
-+ 逻辑运算符
+- 逻辑运算符
 
-​          &&，|| , ! , &, |, ^
+​    &&，|| , ! , &, |, ^
 
-+ 位运算符
+- 位运算符
 
-​          &，|，^, ~ ,>> , <<,     （了解！！！）
+   &，|，^, ~ ,>> , <<, （了解！！！）
 
-+ 条件运算符
+- 条件运算符
 
-​           ?   :
+​           ?     :
 
 【2】 相关概念辨析
 
-＋        运算符 操作符           Operator
+＋        运算符 操作符       Operator
 
-5 + 6    表达式                       expression
+5 + 6        表达式               expression
 
-5    6     操作数                       Operand
+5 6          操作数                Operand
 
-int m = 5 + 6;    语句             Sentence
+int m = 5 + 6;      语句      Sentence
 
+#### 算数运算符
 
+#### /和%
 
-### 算数运算符
+【1】 / 除法运算符：表示两个数相除运算
 
-####   /和%
-
-【1】 /   除法运算符：表示两个数相除运算
-
-​          %   取余运算符：用来求余数的
+ % 取余运算符：用来求余数的
 
 ```java
 public class TestOpe01{
@@ -96,8 +94,6 @@ public class TestOpe02{
 }
 ```
 
-
-
 #### +
 
 【1】+的作用：
@@ -130,8 +126,6 @@ public class TestOpe03{
 	}
 }
 ```
-
-
 
 #### ++
 
@@ -171,8 +165,6 @@ public class TestOpe04{
 
 看++再前还是在后，如果++在后：先运算，后加1； 如果++在前，先加1，后运算
 
-
-
 【2】练习：
 
 代码：
@@ -196,7 +188,237 @@ public class TestOpe05{
 
 运算过程：
 
-![image-20201222181148982](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%2B%2B%E8%BF%90%E7%AE%97%E4%BC%98%E5%85%88%E7%BA%A7?token=ANGHKQLAM5GF5KBWQPGHWB274HDLE)
+![运算符优先级的问题](https://i.loli.net/2020/12/23/ezlnYG6hNZyTbpC.png)
 
 
+
+#### 赋值运算符
+
+【1】 =的作用：将等号右侧的值赋给等号左侧：
+
+int age = 19;
+
+int age = 10+3+8;
+
+
+
+【2】练习：
+
+![赋值运算](https://i.loli.net/2020/12/23/qnkFhsQxrXE7Z9T.png)
+
+```java
+public class TestOpe06{
+	public static void main(String[] args){
+		//任意给出两个数，交换两个数并输出：
+		//1.给出两个数：
+		int num1 = 10;
+		int num2 = 20;
+		//2.输出交换前的两个数：
+		System.out.println("交换前"+num1+"\t"+num2);
+		//3.交换
+		/*
+		错误代码：
+		num1 = num2;
+		num2 = num1;
+		*/
+		//解决办法：
+		//引入一个中间变量
+		int t ;
+		t = num1;
+		num1 = num2;
+		num2 = t;
+		/*
+		int t;
+		t = num2;
+		num2 = num1;
+		num1 = t;
+		
+		*/
+		//4.输出交换后的两个数：
+		System.out.println("交换前"+num1+"\t"+num2);
+	}
+}
+```
+
+
+
+面试题： 两个数交换的四种方式：[两个数字交换的四种方法 - 官朝辉 - 博客园 (cnblogs.com)](https://www.cnblogs.com/phonecom/p/8e97862eb0cf307753cf59ad4d9c0df3.html)
+
+
+
+#### 扩展运算符
+
+【1】代码:
+
+```java
+public class TestOpe07{
+	public static void main(String[] args){
+		//实现功能：给出三个数，求和：
+		//1.给出三个数：
+		int num1 = 10;
+		int num2 = 20;r
+		int num3 = 30;
+		//2.求和
+		//定义一个变量，用来接收和：
+		int sum = 0;
+		sum = sum + num1;//等效：  sum += num1;
+		sum = sum + num2;//等效：  sum += num2;
+		sum = sum + num3;//等效：  sum += num3;
+		//int sum = num1+num2+num3;
+		
+		//3.将和输出：
+		System.out.println("和："+sum);
+	}
+}
+```
+
+内存：
+
+![image-20201223152757001](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/image-20201223152757001.png?token=ANGHKQKCLX3HWIF7UTMAEJC74MEJS)
+
+
+
+【2】a += b 和 a = a+b 区别：
+
+（1）a += b     可读性稍差 编译效率高  底层自动进行类型转换
+
+（2）a = a+b    可读性好 编译效率低  手动进行类型转换
+
+
+
+【3】 面试题
+
+（1） 请问a+=b相当于a=a+b,那么也相当于 a=b+a 吗？
+
+对于基本数据类型来说：没区别
+
+​              a:10       b:40
+
+​                                    a=a+b                          a=b+a
+
+​                                     a=50                             a=50
+
+对String类型就不一样了：
+
+​              a: "u"     b:"x"
+
+​                                   a=a+b                          a=b+a
+
+​                                     a="ux"                         a="xu"
+
+​                                      正着拼                           倒着拼
+
+
+
+（2）下面的代码哪一句出错：4
+
+byte a = 10; ---->1
+
+int b =20; ---->2
+
+a+=b; ---->3
+
+a= a+b; ---->4d
+
+
+
+更正： a = (byte)(a+b);
+
+
+
+#### 关系运算符
+
+```java
+public class TestOpe08{
+	public static void main(String[] args){
+		//> ，< ， >= ，<= ，== ， !=
+		//关系运算符最终结果：要么是true要么是false
+		System.out.println(4>9);//false
+		System.out.println(4<9);//true
+		System.out.println(4>=9);//false
+		System.out.println(4<=9);//true
+		System.out.println(4==9);//false
+		System.out.println(4!=9);//true
+		System.out.println((5<9)!=(6==8));//true
+	}
+}
+```
+
+
+
+#### 逻辑运算符
+
+  &&，|| , ! , &, |, ^
+
+逻辑运算符：进行逻辑运算的，运算符左右连接的都是布尔类型 操作数，最终表达式的结果是布尔值：要么是true，要么是false
+
+代码：
+
+```java
+public class TestOpe09{
+	public static void main(String[] args){
+		// 逻辑与：& 规律：只要有一个操作数是false，那么结果一定是false
+		System.out.println(true&true);
+		System.out.println(true&false);
+		System.out.println(false&false);
+		System.out.println(false&true);
+		
+		// 短路与：&& 规律： 效率高一些，只要第一个表达式是false，那么第二个表达式就不用计算了，结果一定是false
+		System.out.println(true&&true);
+		System.out.println(true&&false);
+		System.out.println(false&&false);
+		System.out.println(false&&true);
+		
+		// 逻辑或： | 规律： 只要有一个操作数是true，那么结果一定是true
+		System.out.println(true|true);
+		System.out.println(true|false);
+		System.out.println(false|false);
+		System.out.println(false|true);
+		
+		// 短路或： || 规律： 效率高一些，只要第一个表达式是true，那么第二个表达式就不用计算了，结果一定是true
+		System.out.println(true||true);
+		System.out.println(true||false);
+		System.out.println(false||false);
+		System.out.println(false||true);
+		
+		// 逻辑非： ！ 规律： 相反结果
+		System.out.println(!true);
+		System.out.println(!false);
+		
+		//逻辑异或： ^ 规律： 两个操作数相同，结果为false；不相同，结果为true
+		System.out.println(true^true);
+		System.out.println(true^false);
+		System.out.println(false^false);
+		System.out.println(false^true);
+	}
+}
+```
+
+再做一个加深的练习：
+
+```java
+public class TestOpe10{
+	public static void main(String[] args){
+		int i=8;
+		System.out.println((5>7)&&(i++==2));//false
+		System.out.println(i);//8
+		
+		int a=8;
+		System.out.println((5>7)&(a++==2));//false
+		System.out.println(a);//9
+		
+		int m=8;
+		System.out.println((5<7)&&(m++==2));//false
+		System.out.println(m); //9
+		
+		int b=2;
+		System.out.println((5<7)&(b++==2));//true
+		System.out.println(b); //3
+		
+		int c=2;
+		System.out.println((5<7)&(++c==2)); //false
+		System.out.println(c); //3
+	}
+}
+```
 
