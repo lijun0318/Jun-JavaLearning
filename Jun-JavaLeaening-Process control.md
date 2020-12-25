@@ -158,3 +158,98 @@ public class TestIf02{
 }
 ```
 
+
+
+##### 双分支
+
+【1】语法结构:
+if(布尔表达式){
+语句块1
+}else{
+      语句块2
+}
+当布尔表达式为真时，执行语句块1，否则，执行语句块2。也就是else部分。流程图如图所示：
+
+![image-20201225201614188](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%8F%8C%E5%88%86%E6%94%AF?token=ANGHKQLHN4U6K6DT457UBLS74XMGE)
+
+
+
+##### 随机数
+
+随机数：这个数在生成之前我们不确定这个数是多少，不可知
+
+在Java中依靠一个类：Math类帮助我们生成，这个类中有一个方法专门用来生成随机数：
+
+![image-20201225210120946](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/random()?token=ANGHKQPAUH6LEMLOZLVIPM274XRO2)
+
+Math.random() -------> [0.0,1.0)
+Math.random()*6 ----->[0.0,6.0)
+(int)(Math.random()*6)  ----->[0,5]
+(int)(Math.random()*6) +1 ----->[1,6]
+
+应用到程序中：
+
+```java
+int num1 = (int)(Math.random()*6) +1;
+int num2 = (int)(Math.random()*6) +1;
+int num3 = (int)(Math.random()*6) +1;
+```
+
+
+
+#### 分支的嵌套使用
+
+##### 分支结构练习1
+
+练习：
+会员购物时，不同积分享受的折扣不同，规则如下：
+
+| 会员积分X    | 折扣 |
+| ------------ | ---- |
+| x>=8000      | 6折  |
+| 4000<=x<8000 | 7折  |
+| 2000<=x<4000 | 8折  |
+| x<2000       | 9折  |
+
+计算会员购物时获得的折扣，效果如下：
+
+![image-20201225214909824](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%88%86%E6%94%AF%E5%B5%8C%E5%A5%97%E7%B1%BB%E5%9E%8B1?token=ANGHKQOM2JV3H5KMFPIAQ4C74XXCE)
+
+本题主要考的是 程序的优化：
+
+```java
+import java.util.Scanner;
+public class TestIf04{
+    public static void main(String[] args){
+			//1.给出积分：
+		Scanner sc = new Scanner(System.in);
+		System.out.println("请录入你的积分：");
+		
+			//2.根据积分判断折扣：
+		//判断是否为int类型：
+		if(sc.hasNextInt()==true){
+			int num = sc.nextInt();
+			//判断这个数是否为正数
+			if(num>=0){
+				String discount = "";
+				if(num>=8000){
+					discount = "0.6";
+				}else if(num>=4000){
+					discount = "0.7";
+				}else if(num>=2000){
+					discount = "0.8";
+				}else{
+					discount = "0.9";
+				}
+				System.out.println("你的折扣是："+discount);
+			}else{
+			System.out.println("你输入不是正数！");
+			}
+	
+		}else{
+			System.out.println("你输入的不是整型！");
+		}
+	}
+}
+```
+
