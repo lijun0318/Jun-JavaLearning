@@ -415,3 +415,117 @@ public class TestSwitch{
 ### 循环结构
 
 #### while
+
+【1】语法结构：
+while (布尔表达式) {
+            循环体;
+}
+在循环刚开始时，会计算一次“布尔表达式”的值，若条件为真，执行循环体。而对于后来每一次额外的循环，都会在开始前重新计算一次。
+语句中应有使循环趋向于结束的语句，否则会出现无限循环–––"死"循环。
+while循环结构流程图如图所示:
+
+![image-20201226160520802](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/while%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84%E6%B5%81%E7%A8%8B%E5%9B%BE?token=ANGHKQIHZOPUV2DRTLEPDGS743XQ4)
+
+【2】练习：1+2+3+4+5
+
+```java
+public class TestWhile{
+        public static void main(String[] args){
+                //功能：1+2+3+4+5
+                //1.定义变量：
+                int num1 = 1;
+                int num2 = 2;
+                int num3 = 3;
+                int num4 = 4;
+                int num5 = 5;
+                //2.定义一个求和变量，用来接收和：
+                int sum = 0;
+                sum += num1;
+                sum += num2;
+                sum += num3;
+                sum += num4;
+                sum += num5;
+                
+                //3.输出和
+                System.out.println(sum);
+        }
+}
+```
+
+上述代码缺点：变量的定义个数太多了
+解决：
+
+```java
+public class TestWhile{
+        public static void main(String[] args){
+                //功能：1+2+3+4+5
+                //1.定义变量：
+                int num = 1;
+                //2.定义一个求和变量，用来接收和：
+                int sum = 0;
+                sum += num;
+                num++;
+                sum += num;
+                num++;
+                sum += num;
+                num++;
+                sum += num;
+                num++;
+                sum += num;
+                num++;
+                
+                //3.输出和
+                System.out.println(sum);
+        }
+}
+```
+
+上述代码缺点：重复写的代码太多了
+解决：---》引入Java中循环结构：
+
+```java
+public class TestWhile{
+        public static void main(String[] args){
+                //功能：1+2+3+4+5
+                //1.定义变量：
+                int num = 1;[1]条件初始化
+                //2.定义一个求和变量，用来接收和：
+                int sum = 0;              
+                while(num<=5){[2]条件判断
+                        sum += num;[3]循环体
+                        num++;[4]迭代
+                }      
+                //3.输出和
+                System.out.println(sum);
+        }
+}
+```
+
+总结：
+【1】循环作用：将部分代码重复执行。
+                                循环只是提高了程序员编写代码的效率，但是底层执行的时候依然是重复执行。
+【2】循环四要素：
+
+![image-20201226160730243](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%BE%AA%E7%8E%AF%E5%9B%9B%E8%A6%81%E7%B4%A0?token=ANGHKQIWWVOKQ76WN3BZ4NC743XZI)
+
+【1】条件初始化
+
+【2】条件判断
+
+【3】循环体
+
+【4】迭代
+
+初始化谁，就判断谁，判断谁，就迭代谁
+执行过程：[1][2][3][4] [2][3][4] [2][3][4]。。。。
+
+【3】循环的执行过程：
+
+![image-20201226161016145](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B?token=ANGHKQLRIDJBOBF5PINIRAS743YDE)
+
+【4】验证循环的执行过程：
+
+![image-20201226161103753](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/%E9%AA%8C%E8%AF%81%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B?token=ANGHKQJ3EI4PRJF4MU3LDUC743YGI)
+
+
+
