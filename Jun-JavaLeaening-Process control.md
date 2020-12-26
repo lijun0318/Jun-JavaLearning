@@ -253,3 +253,165 @@ public class TestIf04{
 }
 ```
 
+
+
+##### 分支结构练习2
+
+练习：
+小朋友搬桌子：
+年龄大于7岁，可以搬桌子；
+如果年龄大于5岁，性别是男，可以搬桌子；
+否则不可以搬动桌子，提示：你还太小了
+
+本题主要考的是：逻辑
+
+方式1：性别用0或者1接收：
+
+```java
+import java.util.Scanner;
+public class TestIf05{
+        public static void main(String[] args){
+                //1.录入小朋友的年龄：
+                Scanner sc = new Scanner(System.in);
+                System.out.println("请录入小朋友的年龄：");
+                int age = sc.nextInt();
+                
+                //2.根据年龄判断：
+                if(age>=7){
+                        System.out.println("yes");
+                }else if(age>=5){
+                        //录入小朋友的性别；
+                        System.out.println("请录入小朋友的性别：男：1  女 ：0");
+                        int sex = sc.nextInt();
+                        if(sex==1){//男生
+                                System.out.println("yes");
+                        }else{//女孩
+                                System.out.println("no");
+                        }
+                }else{//age<5
+                        System.out.println("no");
+                }
+        }
+}
+```
+
+方式2：性别用男或者女接收：
+
+```java
+import java.util.Scanner;
+public class TestIf06{
+        public static void main(String[] args){
+                //1.录入小朋友的年龄：
+                Scanner sc = new Scanner(System.in);
+                System.out.println("请录入小朋友的年龄：");
+                int age = sc.nextInt();
+                
+                //2.根据年龄判断：
+                if(age>=7){
+                        System.out.println("yes");
+                }else if(age>=5){
+                        //录入小朋友的性别；
+                        System.out.println("请录入小朋友的性别：");
+                        String str = sc.next();
+                        char sex = str.charAt(0);
+                        if(sex=='男'){
+                                System.out.println("yes");
+                        }else{
+                                System.out.println("no");
+                        }
+                }else{//age<5
+                        System.out.println("no");
+                }
+        }
+}
+```
+
+
+
+#### switch
+
+【1】switch多分支结构(多值情况)
+语法结构：
+switch (表达式) {
+    case 值1:
+         语句序列1;
+         [break];
+    case 值2:
+         语句序列2;
+         [break];
+        … … …      … …
+    [default:默认语句;]
+}
+
+switch语句会根据表达式的值从相匹配的case标签处开始执行，一直执行到break语句处或者是switch语句的末尾。如果表达式的值与任一case值不匹配，则进入default语句（如果存在default语句的情况）。根据表达式值的不同可以执行许多不同的操作。switch语句中case标签在JDK1.5之前必须是整数（long类型除外）或者枚举，不能是字符串，在JDK1.7之后允许使用字符串(String)。大家要注意，当布尔表达式是等值判断的情况，可以使用if-else if-else多分支结构或者switch结构，如果布尔表达式区间判断的情况，则只能使用if-else if-else多分支结构。switch多分支结构的流程图如图所示：
+
+![image-20201226105151116](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/switch%E5%A4%9A%E5%88%86%E6%94%AF%E6%B5%81%E7%A8%8B%E5%9B%BE?token=ANGHKQOPAT723ELXG4V6U7C742S22)
+
+【2】练习
+
+```java
+public class TestSwitch{
+        public static void main(String[] args){
+                /*
+                实现一个功能：
+                根据给出的学生分数，判断学生的等级：
+                >=90  -----A
+                >=80  -----B
+                >=70  -----C
+                >=60  -----D
+                <60   -----E
+                
+                用if分支：
+                if(score>=90){
+                        
+                }else if(score>=80){
+                        
+                }
+                */
+                //1.给出学生的成绩：
+                int score = 167;
+                //2.根据成绩判断学生的等级：
+                switch(score/10){
+                        case 10 : 
+                        case 9 : System.out.println("A级");break;
+                        case 8 : System.out.println("B级");break;
+                        case 7 : System.out.println("C级");break;
+                        case 6 : System.out.println("D级");break;
+                        default:System.out.println("成绩错误");break;
+                        case 5 :  
+                        case 4 :  
+                        case 3 :  
+                        case 2 :  
+                        case 1 :  
+                        case 0 : System.out.println("E级");break;
+                        
+                }
+                /*
+                【1】语法结构：
+                switch(){
+                        case * :
+                        case * :
+                        .......
+                }
+                【2】switch后面是一个()，()中表达式返回的结果是一个等值，这个等值的类型可以为：
+                int,byte,short,char,String,枚举类型
+                【3】这个()中的等值会依次跟case后面的值进行比较，如果匹配成功，就执行:后面的代码
+                【4】为了防止代码的“穿透”效果：在每个分支后面加上一个关键词break，遇到break这个分支就结束了
+                【5】类似else的“兜底”“备胎”的分支：default分支
+                【6】default分支可以写在任意的位置上，但是如果没有在最后一行，后面必须加上break关键字，
+                如果在最后一行的话，break可以省略
+                【7】相邻分支逻辑是一样的，那么就可以只保留最后一个分支，上面的都可以省去不写了
+                【8】switch分支和if分支区别：
+                表达式是等值判断的话--》if ，switch都可以
+                如果表达式是区间判断的情况---》if最好
+                【9】switch应用场合：就是等值判断，等值的情况比较少的情况下
+                */
+        }
+}
+```
+
+
+
+### 循环结构
+
+#### while
