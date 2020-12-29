@@ -529,3 +529,63 @@ public class TestWhile{
 
 
 
+#### do while
+
+【1】语法结构：
+do {
+            循环体;
+    } while(布尔表达式) ;
+do-while循环结构会先执行循环体，然后再判断布尔表达式的值，若条件为真，执行循环体，当条件为假时结束循环。do-while循环的循环体至少执行一次。do-while循环结构流程图如图所示：
+
+![image-20201229144714342](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/do-while%20%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84?token=ANGHKQPN3GXW6HJMGDW5JOC75LIUU)
+
+【2】代码：
+
+```java
+public class TestDoWhile{
+        public static void main(String[] args){
+                //1+2+3+4+...100
+                //while方式:
+                /*
+                int i = 101;
+                int sum = 0;
+                while(i<=100){
+                        sum += i;
+                        i++;
+                }
+                System.out.println(i);//101
+                System.out.println(sum);//0
+                */
+                //do-while方式：
+                
+                int i = 101;
+                int sum = 0;
+                do{
+                        sum += i;
+                        i++;
+                }while(i<=100);//一定要注意写这个分号，否则编译出错
+                System.out.println(i);//102
+                System.out.println(sum);//101
+                /*
+                【1】while和do-while的区别:
+                        while:先判断，再执行
+                        do-while:先执行，再判断---》至少被执行一次，从第二次开始才进行判断
+                【2】什么场合使用do-while:
+                
+                while(考试是否通过){
+                        考试；
+                }
+                ---》不合适
+                do{
+                        考试；
+                }while(考试是否通过);
+                ---》合适
+                */
+                
+        }
+}
+```
+
+
+
+#### for
