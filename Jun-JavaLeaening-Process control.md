@@ -589,3 +589,80 @@ public class TestDoWhile{
 
 
 #### for
+
+【1】语法结构：
+for (初始表达式; 布尔表达式; 迭代因子) {
+          循环体;
+}
+for循环语句是支持迭代的一种通用结构，是最有效、最灵活的循环结构。for循环在第一次反复之前要进行初始化，即执行初始表达式；随后，对布尔表达式进行判定，若判定结果为true，则执行循环体，否则，终止循环；最后在每一次反复的时候，进行某种形式的“步进”，即执行迭代因子。
+初始化部分设置循环变量的初值
+条件判断部分为任意布尔表达式
+迭代因子控制循环变量的增减
+for循环在执行条件判定后，先执行的循环体部分，再执行步进。
+for循环结构的流程图如图所示：
+
+![image-20201231000431123](https://raw.githubusercontent.com/lijun0318/PicGo/master/img/for%E7%9A%84%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84?token=ANGHKQKHFAMMQKZ7IFSMVAC75SSWC)
+
+
+
+【2】代码：
+
+```java
+public class TestFor01{
+        public static void main(String[] args){
+                //1+2+3+..+100
+                //while:
+                /*int i = 1;
+                int sum = 0;
+                while(i<=100){
+                        sum += i;
+                        i++;
+                }
+                System.out.println(sum);
+                */
+                
+                //for:
+                int sum = 0;
+                int i;
+                for(i = 1;i<=100;i++){
+                        sum += i;
+                }
+                System.out.println(sum);
+                System.out.println(i);
+                
+                /*
+                【1】for的结构：
+                for(条件初始化;条件判断;迭代){
+                        循环体；
+                }
+                
+                【2】i的作用域：作用范围：离变量最近{}  --->可以自己去控制
+                【3】for循环格式特别灵活：格式虽然很灵活，但是我们自己写代码的时候不建议灵活着写。
+                for(;;){}  -->死循环
+                
+                int i = 1;
+                for(;i<=100;){
+                        sum += i;
+                        i++;
+                }
+                
+                【4】死循环：
+                for(;;){}
+                
+                while(true){}
+                
+                do{
+                        
+                }while(true);
+                
+                【5】循环分为两大类：
+                第一类：当型   while(){}   for(;;){}
+                第二类：直到型  do{}while();
+                
+                【6】以后常用：for循环 
+                【7】do-while,while,for循环谁的效率高？  一样高 
+                */
+        }
+}
+```
+
