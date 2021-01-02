@@ -666,3 +666,651 @@ public class TestFor01{
 }
 ```
 
+
+
+#### break
+
+【1】通过练习感受break的作用：作用：停止循环：
+
+```java
+public class TestFor02{
+        public static void main(String[] args){
+                //功能：求1-100的和，当和第一次超过300的时候，停止程序
+                int sum = 0;
+                for(int i=1;i<=100;i++){	
+                        sum += i;	
+                        if(sum>300){//当和第一次超过300的时候
+                                //停止循环
+                                break;//停止循环
+                        }
+                        System.out.println(sum);
+                }
+                
+        }
+}
+```
+
+【2】加深理解：
+
+```java
+public class TestFor03{
+        public static void main(String[] args){
+                //break的作用：停止最近的循环
+                /*
+                for(int i=1;i<=100;i++){
+                        System.out.println(i);
+                        if(i==36){
+                                break;//1-36
+                        }
+                }
+                */
+                for(int i=1;i<=100;i++){
+                        System.out.println(i);
+                        while(i==36){
+                                break; //1-100  ---》break停止的是while循环，而不是外面的for循环
+                        }
+                }
+        }
+}
+```
+
+【3】break带标签的使用：
+
+```java
+public class TestFor04{
+        public static void main(String[] args){
+                outer:     ----》定义标签结束的位置
+                for(int i=1;i<=100;i++){
+                        System.out.println(i);
+                        while(i==36){
+                                break outer;    ----》根据标签来结束循环 
+                        }
+                }
+        }
+}
+```
+
+多层循环也可以使用标签，按照自己的需求去设定即可：
+
+![image.png](https://ae01.alicdn.com/kf/Hf1124bd9b33c414b9f1aad756ced3231C.png)
+
+#### continue
+
+【1】通过案例感受continue的作用：结束本次循环，继续下一次循环
+
+```java
+public class TestFor05{
+        public static void main(String[] args){
+                //功能：输出1-100中被6整除的数：
+                //方式1：
+                /*
+                for(int i=1;i<=100;i++){	
+                        if(i%6==0){//被6整除
+                                System.out.println(i);
+                        }
+                }
+                */
+                
+                //方式2：
+                for(int i=1;i<=100;i++){	
+                        if(i%6!=0){//不被6整除
+                                continue;//停止本次循环，继续下一次循环
+                        }
+                        System.out.println(i);
+                }
+        }
+}
+```
+
+【2】加深理解：
+
+```java
+public class TestFor06{
+        public static void main(String[] args){
+                //continue:结束本次离它近的循环，继续下一次循环
+                /*
+                for(int i=1;i<=100;i++){	
+                        if(i==36){
+                                continue;//1-100中间没有36
+                        }
+                        System.out.println(i);
+                }
+                */
+                
+                for(int i=1;i<=100;i++){	
+                        while(i==36){
+                                System.out.println("------");
+                                continue; //1-35+死循环
+                        }
+                        System.out.println(i);
+                }
+        }
+}
+```
+
+【3】continue带标签的使用：
+
+```java
+public class TestFor07{
+        public static void main(String[] args){
+                
+                outer:
+                for(int i=1;i<=100;i++){	
+                        while(i==36){ 
+                                continue outer;  //1-100没有36
+                        }
+                        System.out.println(i);
+                }
+        }
+}
+```
+
+![image.png](https://ae03.alicdn.com/kf/H29d1261437a546509197c3779db032561.png)
+
+#### return
+
+return的作用：跟循环无关，就是程序中遇到return那么return所在的那个方法就停止执行了：
+
+```java
+public class TestFor08{
+        public static void main(String[] args){
+                //return:遇到return结束当前正在执行的方法
+                for(int i=1;i<=100;i++){	
+                        while(i==36){ 
+                                return;  
+                        }
+                        System.out.println(i);
+                }
+                
+                System.out.println("-----");//不输出
+        }
+}
+```
+
+
+
+##### 循环练习
+
+【1】练习1：
+
+```java
+public class TestFor09{
+        public static void main(String[] args){
+                /* 输出1-100中被5整除的数,每行输出6个*/
+                //引入一个计数器：
+                int count = 0;//初始值为0
+                for(int i=1;i<=100;i++){
+                        if(i%5==0){//被5整除的数
+                                System.out.print(i+"\t");
+                                count++;//每在控制台输出一个数，count就加1操作
+                                if(count%6==0){
+                                        System.out.println();//换行
+                                }
+                        }
+                }
+        }
+}
+```
+
+【2】练习2：
+
+```java
+import java.util.Scanner;
+public class TestFor10{
+        public static void main(String[] args){
+                /*
+                        实现一个功能： 
+                   【1】请录入10个整数，当输入的数是666的时候，退出程序。
+                   【2】判断其中录入正数的个数并输出。
+                   【3】判断系统的退出状态：是正常退出还是被迫退出。
+                */
+                //引入一个计数器：
+                int count = 0;
+                //引入一个布尔类型的变量：
+                boolean flag = true; //---》理解为一个“开关”，默认情况下开关是开着的
+                Scanner sc = new Scanner(System.in);
+                for(int i=1;i<=10;i++){//i:循环次数
+                        System.out.println("请录入第"+i+"个数：");
+                        int num = sc.nextInt();
+                        if(num>0){//录入的正数
+                                count++;
+                        }
+                        if(num==666){
+                                flag = false;//当遇到666的时候，“开关”被关上了
+                                //退出循环：
+                                break;
+                        }
+                        
+                }
+                
+                System.out.println("你录入的正数的个数为："+count);
+                
+                
+                if(flag){//flag==true
+                        System.out.println("正常退出！");
+                }else{//flag==false
+                        System.out.println("被迫退出！");
+                }
+                
+                
+                
+        }
+}
+```
+
+
+
+### 循环的嵌套使用
+
+##### 乘法口诀
+
+乘法口诀：
+1*****1=1
+1*****2=2   2*****2=4
+1*****3=3   2*****3=6   3*****3=9
+1*****4=4   2*****4=8   3*****4=12  4*****4=16
+1*****5=5   2*****5=10  3*****5=15  4*****5=20  5*****5=25
+1*****6=6   2*****6=12  3*****6=18  4*****6=24  5*****6=30  6*****6=36
+1*****7=7   2*****7=14  3*****7=21  4*****7=28  5*****7=35  6*****7=42  7*****7=49
+1*****8=8   2*****8=16  3*****8=24  4*****8=32  5*****8=40  6*****8=48  7*****8=56  8*****8=64
+1*****9=9   2*****9=18  3*****9=27  4*****9=36  5*****9=45  6*****9=54  7*****9=63  8*****9=72  9*9=81
+
+代码：
+
+```java
+public class TestFor11{
+    public static void main(String[] args){
+                //1*6=6   2*6=12  3*6=18  4*6=24  5*6=30  6*6=36
+                /*
+                System.out.print("1*6=6"+"\t");
+                System.out.print("2*6=12"+"\t");
+                System.out.print("3*6=18"+"\t");
+                System.out.print("4*6=24"+"\t");
+                System.out.print("5*6=30"+"\t");
+                System.out.print("6*6=36"+"\t");
+                
+                for(int i=1;i<=6;i++){
+                        System.out.print(i+"*6="+i*6+"\t");
+                }
+                //换行
+                System.out.println();
+                
+                //1*7=7   2*7=14  3*7=21  4*7=28  5*7=35  6*7=42  7*7=49
+                for(int i=1;i<=7;i++){
+                        System.out.print(i+"*7="+i*7+"\t");
+                }
+                //换行
+                System.out.println();
+                
+                //1*8=8   2*8=16  3*8=24  4*8=32  5*8=40  6*8=48  7*8=56  8*8=64
+                for(int i=1;i<=8;i++){
+                        System.out.print(i+"*8="+i*8+"\t");
+                }
+                //换行
+                System.out.println();
+                */
+                
+                for(int j=1;j<=9;j++){
+                        for(int i=1;i<=j;i++){
+                                System.out.print(i+"*"+j+"="+i*j+"\t");
+                        }
+                        //换行
+                        System.out.println();
+                }
+        }
+}
+```
+
+1*****9=9   2*****9=18  3*****9=27  4*****9=36  5*****9=45  6*****9=54  7*****9=63  8*****9=72  9*****9=81
+1*****8=8   2*****8=16  3*****8=24  4*****8=32  5*****8=40  6*****8=48  7*****8=56  8*****8=64
+1*****7=7   2*****7=14  3*****7=21  4*****7=28  5*****7=35  6*7=42  7*********7=49
+1*****6=6   2*****6=12  3*****6=18  4*****6=24  5*****6=30  6*****6=36
+1*****5=5   2*****5=10  3*****5=15  4*****5=20  5*****5=25
+1*****4=4   2*****4=8   3*****4=12  4*****4=16
+1*****3=3   2*****3=6   3*****3=9
+1*****2=2   2*****2=4
+1 ***1=1
+
+代码：
+
+```java
+public class TestFor12{
+    public static void main(String[] args){
+                
+                /*
+                //1*8=8   2*8=16  3*8=24  4*8=32  5*8=40  6*8=48  7*8=56  8*8=64
+                for(int i=1;i<=8;i++){
+                        System.out.print(i+"*8="+i*8+"\t");
+                }
+                //换行
+                System.out.println();
+                
+                
+                //1*7=7   2*7=14  3*7=21  4*7=28  5*7=35  6*7=42  7*7=49
+                for(int i=1;i<=7;i++){
+                        System.out.print(i+"*7="+i*7+"\t");
+                }
+                //换行
+                System.out.println();
+                 
+                //1*6=6   2*6=12  3*6=18  4*6=24  5*6=30  6*6=36
+                for(int i=1;i<=6;i++){
+                        System.out.print(i+"*6="+i*6+"\t");
+                }
+                //换行
+                System.out.println();
+                
+                
+                
+                
+                */
+                
+                for(int j=9;j>=1;j--){
+                        for(int i=1;i<=j;i++){
+                                System.out.print(i+"*"+j+"="+i*j+"\t");
+                        }
+                        //换行
+                        System.out.println();
+                }
+        }
+}
+```
+
+
+
+#### 打印各种形状
+
+【1】长方形：
+
+![image.png](https://ae04.alicdn.com/kf/H37e00df0a16f49ad84dc21a5e752a40ft.png)
+
+```java
+  for(int j=1;j<=4;j++){//j:控制行数
+                        //*********
+                        for(int i=1;i<=9;i++){//i:控制*的个数
+                                System.out.print("*");
+                        }
+                        //换行：
+                        System.out.println();
+                }
+```
+
+【2】距离前面有一定空隙的长方形：
+
+![image.png](https://ae02.alicdn.com/kf/Hb98c1fe2424f45e9b34d58ba83c4ca8f2.png)
+
+```java
+  for(int j=1;j<=4;j++){//j:控制行数
+                        //加入空格：
+                        for(int i=1;i<=5;i++){//i:控制空格的个数
+                                System.out.print(" ");
+                        }
+                        //*********
+                        for(int i=1;i<=9;i++){//i:控制*的个数
+                                System.out.print("*");
+                        }
+                        //换行：
+                        System.out.println();
+                }
+```
+
+【3】平行四边形：
+
+![image.png](https://ae02.alicdn.com/kf/H786e96450d4c41bfa4b968574ec1a909P.png)
+
+```java
+for(int j=1;j<=4;j++){//j:控制行数
+                        //加入空格：
+                        for(int i=1;i<=(9-j);i++){//i:控制空格的个数
+                                System.out.print(" ");
+                        }
+                        //*********
+                        for(int i=1;i<=9;i++){//i:控制*的个数
+                                System.out.print("*");
+                        }
+                        //换行：
+                        System.out.println();
+                }
+```
+
+【4】三角形：
+
+![image.png](https://ae04.alicdn.com/kf/H594fe653f97546c481a3923eb2546ef6I.png)
+
+```java
+for(int j=1;j<=4;j++){//j:控制行数
+                        //加入空格：
+                        for(int i=1;i<=(9-j);i++){//i:控制空格的个数
+                                System.out.print(" ");
+                        }
+                        //*********
+                        for(int i=1;i<=(2*j-1);i++){//i:控制*的个数
+                                System.out.print("*");
+                        }
+                        //换行：
+                        System.out.println();
+                }
+```
+
+【5】菱形：
+
+![image.png](https://ae04.alicdn.com/kf/He9dc6c5db35e4a3d95db9f55aa7b95d6m.png)
+
+```java
+//上面三角形：
+                for(int j=1;j<=4;j++){//j:控制行数
+                        //加入空格：
+                        for(int i=1;i<=(9-j);i++){//i:控制空格的个数
+                                System.out.print(" ");
+                        }
+                        //*********
+                        for(int i=1;i<=(2*j-1);i++){//i:控制*的个数
+                                System.out.print("*");
+                        }
+                        //换行：
+                        System.out.println();
+                }
+                
+                //下面三角形：
+                for(int j=1;j<=3;j++){//j:控制行数
+                        //加入空格：
+                        for(int i=1;i<=(j+5);i++){//i:控制空格的个数
+                                System.out.print(" ");
+                        }
+                        //*********
+                        for(int i=1;i<=(7-2*j);i++){//i:控制*的个数
+                                System.out.print("*");
+                        }
+                        //换行：
+                        System.out.println();
+                }
+```
+
+【6】空心菱形：
+
+![image.png](https://ae05.alicdn.com/kf/He385fed54220415e8961bc3aa35b77a6a.png)
+
+```java
+//上面三角形：
+                for(int j=1;j<=4;j++){//j:控制行数
+                        //加入空格：
+                        for(int i=1;i<=(9-j);i++){//i:控制空格的个数
+                                System.out.print(" ");
+                        }
+                        //*********
+                        for(int i=1;i<=(2*j-1);i++){//i:控制*的个数
+                                if(i==1||i==(2*j-1)){
+                                        System.out.print("*");
+                                }else{
+                                        System.out.print(" ");
+                                }
+                        }
+                        //换行：
+                        System.out.println();
+                }
+                
+                //下面三角形：
+                for(int j=1;j<=3;j++){//j:控制行数
+                        //加入空格：
+                        for(int i=1;i<=(j+5);i++){//i:控制空格的个数
+                                System.out.print(" ");
+                        }
+                        //*********
+                        for(int i=1;i<=(7-2*j);i++){//i:控制*的个数
+                                if(i==1||i==(7-2*j)){
+                                        System.out.print("*");
+                                }else{
+                                        System.out.print(" ");
+                                }
+                        }
+                        //换行：
+                        System.out.println();
+                }
+```
+
+
+
+#### 扩展：菱形打印方式2
+
+【1】实心菱形：
+
+![image.png](https://ae03.alicdn.com/kf/H331f751a2a374c6992eafb459f2e78ce8.png)
+
+```java
+public class TestFor14{
+    public static void main(String[] args){
+                //先打印出一个正方形，然后某些位置上打印* 某些位置上打印空格：
+                int size = 17;
+                int startNum = size/2+1;//起始列号
+                int endNum = size/2+1;//结束列号
+                //引入一个布尔类型的变量---》理解为“开关”
+                boolean flag = true;
+                for(int j=1;j<=size;j++){
+                        //*****
+                        for(int i=1;i<=size;i++){
+                                if(i>=startNum&&i<=endNum){
+                                        System.out.print("*");
+                                }else{
+                                        System.out.print(" ");
+                                }
+                        }
+                        //换行
+                        System.out.println();
+                        if(endNum==size){
+                                flag = false;
+                        }
+                        
+                        if(flag){//flag是true相当于在菱形的上半侧   flag是false相当于在菱形的下半侧
+                                startNum--;
+                                endNum++;
+                        }else{
+                                startNum++;
+                            endNum--;
+                        }
+                }
+        }
+}
+```
+
+【2】空心菱形：
+
+![image.png](https://ae04.alicdn.com/kf/H080bb9bfb36045169b0d94e11de5c19c4.png)
+
+```java
+public class TestFor14{
+    public static void main(String[] args){
+                //先打印出一个正方形，然后某些位置上打印* 某些位置上打印空格：
+                int size = 17;
+                int startNum = size/2+1;//起始列号
+                int endNum = size/2+1;//结束列号
+                //引入一个布尔类型的变量---》理解为“开关”
+                boolean flag = true;
+                for(int j=1;j<=size;j++){
+                        //*****
+                        for(int i=1;i<=size;i++){
+                                if(i==startNum||i==endNum){
+                                        System.out.print("*");
+                                }else{
+                                        System.out.print(" ");
+                                }
+                        }
+                        //换行
+                        System.out.println();
+                        if(endNum==size){
+                                flag = false;
+                        }
+                        
+                        if(flag){//flag是true相当于在菱形的上半侧   flag是false相当于在菱形的下半侧
+                                startNum--;
+                                endNum++;
+                        }else{
+                                startNum++;
+                            endNum--;
+                        }
+                }
+        }
+}
+```
+
+
+
+### 三重循环
+
+##### 百钱买百鸡
+
+【1】二重循环可以帮我们解决：二元一次方程组的问题：
+
+```java
+public class TestFor15{
+    public static void main(String[] args){
+                for(int a=1;a<=5;a++){
+                        for(int b=3;b<=6;b++){
+                                if(a+b==7){
+                                        System.out.println(a+"----"+b);
+                                }
+                        }
+                }
+        }
+}
+```
+
+【2】三重循环可以帮我们解决：三元一次方程组的问题：
+
+```java
+public class TestFor16{
+    public static void main(String[] args){
+                /*
+百钱买百鸡：
+公鸡5文钱一只，母鸡3文钱一只，小鸡3只一文钱，
+用100文钱买一百只鸡,其中公鸡，母鸡，小鸡都必须要有，问公鸡，母鸡，小鸡要买多少只刚好凑足100文钱。
+数学：
+设未知数：
+公鸡：x只
+母鸡：y只
+小鸡：z只
+x+y+z=100只
+5x+3y+z/3=100钱
+                麻烦方式：
+                for(int x=1;x<=100;x++){
+                        for(int y=1;y<=100;y++){
+                                for(int z=1;z<=100;z++){
+                                        if((x+y+z==100)&&(5*x+3*y+z/3==100)&&(z%3==0)){
+                                                System.out.println(x+"\t"+y+"\t"+z);
+                                        }
+                                }
+                        }
+                }
+                */
+                //优化：
+                for(int x=1;x<=19;x++){
+                        for(int y=1;y<=31;y++){
+                                int z = 100-x-y;
+                                if((5*x+3*y+z/3==100)&&(z%3==0)){
+                                        System.out.println(x+"\t"+y+"\t"+z);
+                                } 
+                        }
+                }
+        }
+}
+```
+
